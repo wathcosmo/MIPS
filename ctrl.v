@@ -1,5 +1,5 @@
 module ctrl(clk, irq, conba, data_a, branch,
-            instruct, reg_dst, reg_wr, alu_src1, alu_src2,
+            instruct, pc, reg_dst, reg_wr, alu_src1, alu_src2,
             alu_fun, sign, mem_wr, mem_rd, mem2reg, extop, luop);
             
     parameter ILLOP = 32'h8000_0004;
@@ -7,13 +7,14 @@ module ctrl(clk, irq, conba, data_a, branch,
     input clk, irq, branch;
     input [31:0] conba, data_a;
     output [31:0] instruct;
+    output reg [31:0] pc;
     output reg [1:0] reg_dst, mem2reg;
     output reg [5:0] alu_fun;
     output reg reg_wr, alu_src1, alu_src2;
     output reg sign, mem_wr, mem_rd, extop, luop;
     wire [25:0] jt;
-    wire [2:0] pc_src;
-    reg [31:0] pc;
+    reg [2:0] pc_src;
+    
     
     ROM IF({1'b0, pc[30:0]}, instruct);
     
@@ -24,7 +25,7 @@ module ctrl(clk, irq, conba, data_a, branch,
         case(pc_src)
             0: pc <= pc + 4;
             1: pc <= (branch == 1)? conba : pc + 4;
-            2: pc[25:0] <= jt;
+            2: pc[27:0] <= {jt,2'b00};
             3: pc <= data_a;
             4: pc <= ILLOP;
             5: pc <= XADR;
@@ -32,7 +33,7 @@ module ctrl(clk, irq, conba, data_a, branch,
         
         case(instruct[31:26])
             0:  //R-format
-            begin:
+            begin
                 reg_dst <= 0;
                 mem2reg <= 0;
                 reg_wr <= 1;
