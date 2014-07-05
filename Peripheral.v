@@ -5,14 +5,11 @@ input reset,clk;
 input rd,wr;
 input [31:0] addr;
 input [31:0] wdata;
-output [31:0] rdata;
-reg [31:0] rdata;
+output reg [31:0] rdata;
 
-output [7:0] led;
-reg [7:0] led;
+output reg [7:0] led;
 input [7:0] switch;
-output [11:0] digi;
-reg [11:0] digi;
+output reg [11:0] digi;
 output irqout;
 
 reg [31:0] TH,TL;

@@ -1,4 +1,4 @@
-module ctrl(clk, irq, conba, data_a, branch,
+module Ctrl(clk, irq, conba, data_a, branch,
             instruct, pc, reg_dst, reg_wr, alu_src1, alu_src2,
             alu_fun, sign, mem_wr, mem_rd, mem2reg, extop, luop);
             
