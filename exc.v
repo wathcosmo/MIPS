@@ -1,7 +1,7 @@
 module Exc(clk, reset, instruct, pc, tm_data, um_data,
             reg_dst, reg_wr, alu_src1, alu_src2, alu_fun,
              sign, mem_wr, mem_rd, mem2reg, extop, luop,
-            conba, data_a, branch, alu_out, wdata,
+            conba, data_a0, branch, alu_out, wdata,
             tm_wr, tm_rd, um_wr, um_rd
             );
     

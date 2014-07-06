@@ -13,7 +13,7 @@ module MIPS(clk, reset, switch, led, digi, uart_rx, uart_tx);
     wire sign, mem_wr, mem_rd, extop, luop;
     wire tm_wr, tm_rd, um_wr, um_rd;
     
-    Ctrl ctl(clk, irq, conba, data_a, branch,
+    Ctrl ctl(clk, reset, irq, conba, data_a, branch,
             instruct, pc, reg_dst, reg_wr, alu_src1, alu_src2,
             alu_fun, sign, mem_wr, mem_rd, mem2reg, extop, luop);
     
