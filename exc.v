@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module Exc(clk, reset, instruct, pc, tm_data, um_data,
             reg_dst, reg_wr, alu_src1, alu_src2, alu_fun,
              sign, mem_wr, mem_rd, mem2reg, extop, luop,
@@ -14,10 +15,10 @@ module Exc(clk, reset, instruct, pc, tm_data, um_data,
     input reg_wr, alu_src1, alu_src2, sign, mem_wr, mem_rd;
     input extop, luop;
     output reg [31:0] conba;
-    output [31:0] data_a, wdata, alu_out;
+    output [31:0] data_a0, wdata, alu_out;
     output branch;
     output reg tm_wr, tm_rd, um_wr, um_rd;
-    wire [31:0] data_a0, data_b0, dm_data;
+    wire [31:0] data_b0, dm_data;
     wire [15:0] imm16;
     wire [4:0] shamt, rs, rt, rd;
     reg [4:0] addrc;

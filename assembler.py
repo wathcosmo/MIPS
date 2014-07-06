@@ -216,7 +216,7 @@ for itm in code:
 
 
 for i in mch:
-    print i
+    print i + ';'
 
 
         

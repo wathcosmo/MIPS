@@ -1,10 +1,11 @@
-module Ctrl(clk, reset, irq out, conba, data_a0, branch,
+`timescale 1ns/1ps
+module Ctrl(clk, reset, irqout, conba, data_a0, branch,
             instruct, pc, reg_dst, reg_wr, alu_src1, alu_src2,
             alu_fun, sign, mem_wr, mem_rd, mem2reg, extop, luop);
             
     parameter ILLOP = 32'h8000_0004;
     parameter XADR = 32'h8000_0008;
-    input clk, irqout, branch;
+    input clk, irqout, branch, reset;
     input [31:0] conba, data_a0;
     output [31:0] instruct;
     output reg [31:0] pc;
